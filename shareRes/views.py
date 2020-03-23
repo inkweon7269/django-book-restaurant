@@ -28,6 +28,12 @@ def Create_category(request):
     new_category.save()
     return HttpResponseRedirect(reverse('index'))
 
+def Delete_category(request):
+    category_id = request.POST['categoryId']
+    delete_category = Category.objects.get(id = category_id)
+    print(delete_category)
+    delete_category.delete()
+    return HttpResponseRedirect(reverse('cateCreatePage'))
 
 
 
