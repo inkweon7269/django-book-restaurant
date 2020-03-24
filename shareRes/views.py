@@ -61,6 +61,13 @@ def Create_restaurant(request):
     return HttpResponseRedirect(reverse('index'))
 
 
+def Delete_restaurant(request):
+    res_id = request.POST['resId']
+    restaurant = Restaurant.objects.get(id=res_id)
+    restaurant.delete()
+    return HttpResponseRedirect(reverse('index'))
+
+
 def categoryCreate(request):
     categories = Category.objects.all()
     content = {'categories': categories}
